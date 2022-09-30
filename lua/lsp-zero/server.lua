@@ -151,18 +151,18 @@ s.set_keymaps = function(bufnr)
   map('n', 'gi', lsp 'buf.implementation()')
   map('n', 'go', lsp 'buf.type_definition()')
   map('n', 'gr', lsp 'buf.references()')
-  map('n', '<F2>', lsp 'buf.rename()')
-  map('n', '<F4>', lsp 'buf.code_action()')
-  map('x', '<F4>', lsp 'buf.range_code_action()')
+  map('n', 'gR', lsp 'buf.rename()')
+  map('n', 'gA', lsp 'buf.code_action()')
+  map('x', 'gE', lsp 'buf.range_code_action()')
 
   if state.map_ctrlk then
     map('n', '<C-k>', lsp 'buf.signature_help()')
   end
 
   if global_config.configure_diagnostics then
-    map('n', 'gl', diagnostic 'open_float()')
-    map('n', '[d', diagnostic 'goto_prev()')
-    map('n', ']d', diagnostic 'goto_next()')
+    map('n', 'do', diagnostic 'open_float()')
+    map('n', '[e', diagnostic 'goto_prev()')
+    map('n', ']e', diagnostic 'goto_next()')
   end
 end
 

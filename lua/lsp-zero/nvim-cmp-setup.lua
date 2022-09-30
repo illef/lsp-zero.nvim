@@ -27,12 +27,14 @@ M.default_mappings = function()
     ['<CR>'] = cmp.mapping.confirm({select = false}),
 
     -- navigate items on the list
+    ['<C-k>'] = cmp.mapping.select_prev_item(select_opts),
+    ['<C-j>'] = cmp.mapping.select_next_item(select_opts),
     ['<Up>'] = cmp.mapping.select_prev_item(select_opts),
     ['<Down>'] = cmp.mapping.select_next_item(select_opts),
 
     -- scroll up and down in the completion documentation
-    ['<C-f>'] = cmp.mapping.scroll_docs(5),
-    ['<C-u>'] = cmp.mapping.scroll_docs(-5),
+    -- ['<C-f>'] = cmp.mapping.scroll_docs(5),
+    -- ['<C-u>'] = cmp.mapping.scroll_docs(-5),
 
     -- toggle completion
     ['<C-e>'] = cmp.mapping(function(fallback)
