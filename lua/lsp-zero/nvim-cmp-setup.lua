@@ -4,6 +4,7 @@ local s = {}
 local cmp = require('cmp')
 local luasnip = require('luasnip')
 local global_config = require('lsp-zero.settings')
+local lspkind = require('lspkind')
 
 local merge = function(a, b)
   return vim.tbl_deep_extend('force', {}, a, b)
@@ -108,19 +109,21 @@ M.cmp_config = function()
       )
     },
     formatting = {
-      fields = {'abbr', 'menu', 'kind'},
-      format = function(entry, item)
+      format = function(entry, vim_item)
+        -- fancy icons and a name of kind
+        vim_item.kind = require("lspkind").presets.default[vim_item.kind] .. " " .. vim_item.kind
+
         local short_name = {
           nvim_lsp = 'LSP',
           nvim_lua = 'nvim'
         }
 
         local menu_name = short_name[entry.source.name] or entry.source.name
+        vim_item.menu = string.format('[%s]', menu_name)
 
-        item.menu = string.format('[%s]', menu_name)
-        return item
+        return vim_item
       end,
-    }
+    },
   }
 end
 
