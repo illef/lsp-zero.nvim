@@ -241,5 +241,7 @@ M.format_cmd = function(line1, line2, count, bang)
   execute()
 end
 
+M.setting=s
+
 return M
 
